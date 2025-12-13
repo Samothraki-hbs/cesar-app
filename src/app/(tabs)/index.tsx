@@ -1,35 +1,37 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import revelmasculine from "../../../assets/data/revelmasculine";
+import revelmasculine from "@assets/data/revelmasculine";
+import PossibleChoice from "@components/PossibleChoice";
+import { StyleSheet, View } from "react-native";
+import Colors from "../../constants/Colors";
 
-const revelhomme = revelmasculine[0];
-
-export default function TabOneScreen() {
+export default function MenuScreen() {
   return (
     <View>
-      <Text style={styles.title}>{revelhomme.name}</Text>
-      <Image style={styles.image} source={{ uri: revelhomme.image }} />
-      <Text style={styles.title}>Cote: {revelhomme.cote}</Text>
+      <PossibleChoice choice={revelmasculine[0]} />
+      <PossibleChoice choice={revelmasculine[1]} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 10,
+    overflow: "hidden",
   },
   image: {
-    width: 100,
-    height: 100,
+    width: "100%",
+    aspectRatio: 1,
+    alignSelf: "center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "600",
+    fontSize: 18,
+    marginVertical: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  price: {
+    color: Colors.light.tint,
+    fontWeight: "bold",
+    marginTop: "auto",
   },
 });

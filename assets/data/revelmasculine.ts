@@ -10,7 +10,7 @@ const revelmasculine = [
     id: 1,
     name: "Sayidd El Alami",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Reims_polar_jury_sang_neuf_1560417_%28Sayyid_El_Alami%29.jpg/500px-Reims_polar_jury_sang_neuf_1560417_%28Sayyid_El_Alami%29.jpg",
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.lYeXjrYh7NK-BT2TvxiIIwHaJu%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=a61b32117f85bab9cc98d78ca7adb5c40721d787f38a42f3b905baf02ae78937&ipo=images",
     cote: 50,
   },
   {
