@@ -1,13 +1,6 @@
-import revelmasculine from "@assets/data/revelmasculine";
-import PossibleChoice from "@components/PossibleChoice";
-import { FlatList } from "react-native";
+import { Redirect } from "expo-router";
+import React from "react";
 
-export default function MenuScreen() {
-  return (
-    <FlatList
-      data={revelmasculine}
-      renderItem={({ item }) => <PossibleChoice choice={item} />}
-      contentContainerStyle={{ gap: 10, padding: 10 }}
-    />
-  );
+export default function TabIndex() {
+  return <Redirect href={"/categories"} />;
 }

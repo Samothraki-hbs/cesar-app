@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+import { Image, Pressable, StyleSheet, Text } from "react-native";
 import Colors from "../constants/Colors";
 import { PossibleChoice } from "../types";
 
@@ -11,14 +12,17 @@ type PossibleChoiceProps = {
 
 const PossibleChoiceMen = ({ choice }: PossibleChoiceProps) => {
   return (
-    <View>
-      <Text style={styles.title}>{choice.name}</Text>
-      <Image
-        style={styles.image}
-        source={{ uri: choice.image || defaultChoiceImage }}
-      />
-      <Text style={styles.title}>Cote: {choice.cote}</Text>
-    </View>
+    <Link href={`/categories/${choice.id}`} asChild>
+      <Pressable style={styles.container}>
+        <Text style={styles.title}>{choice.name}</Text>
+        <Image
+          style={styles.image}
+          source={{ uri: choice.image || defaultChoiceImage }}
+          resizeMode="contain"
+        />
+        <Text style={styles.title}>Cote: {choice.cote}</Text>
+      </Pressable>
+    </Link>
   );
 };
 
@@ -29,12 +33,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: 10,
-    overflow: "hidden",
+    flex: 1,
   },
   image: {
     width: "100%",
     aspectRatio: 1,
-    alignSelf: "center",
   },
   title: {
     fontWeight: "600",
