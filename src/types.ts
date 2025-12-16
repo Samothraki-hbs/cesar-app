@@ -9,4 +9,5 @@ export type PossibleChoice = {
   image: string | null;
   name: string;
   cote: number;
+  film: string;
 };

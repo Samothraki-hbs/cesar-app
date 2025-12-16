@@ -14,7 +14,7 @@ type PossibleChoiceProps = {
   choice: PossibleChoice;
 };
 
-const PossibleChoiceMen = ({ category }: CategoryProps) => {
+const PossibleCategory = ({ category }: CategoryProps) => {
   return (
     <Link href={`/categories/${category.id}`} asChild>
       <Pressable style={styles.container}>
@@ -30,7 +30,7 @@ const PossibleChoiceMen = ({ category }: CategoryProps) => {
   );
 };
 
-export default PossibleChoiceMen;
+export default PossibleCategory; // Je pourrai ensuite renommer comme je veux ce composant dans mes imports !
 
 const styles = StyleSheet.create({
   container: {
