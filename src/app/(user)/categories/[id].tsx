@@ -21,7 +21,7 @@ const UniqueChoice = () => {
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ headerShown: false }} />
-      <Text>UniqueChoice for {category.title}</Text>
+      <Text style={styles.title}>Catégorie {category.title}</Text>
       {category.choices.map((choice) => (
         <Pressable
           key={String(choice.id)}
@@ -54,7 +54,7 @@ const UniqueChoice = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "grey",
+    backgroundColor: "#F2F2F7",
     flex: 1,
     padding: 10,
   },
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 64,
-    height: 64,
+    width: 50,
+    height: 50,
     borderRadius: 10,
     marginRight: 10,
   },
