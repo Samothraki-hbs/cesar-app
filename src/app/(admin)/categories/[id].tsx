@@ -1,7 +1,7 @@
 import categories from "@assets/data";
 import Button from "@components/Button";
 import { defaultChoiceImage } from "@components/PossibleChoiceItem";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 const UniqueChoice = () => {
@@ -20,7 +20,7 @@ const UniqueChoice = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ headerShown: false }} />
+      {/*<Stack.Screen options={{ headerShown: false }} />*/}
       <Text style={styles.title}>Catégorie {category.title}</Text>
       {category.choices.map((choice) => (
         <Pressable

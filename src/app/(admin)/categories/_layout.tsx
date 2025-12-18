@@ -11,7 +11,7 @@ export default function CategoriesStack() {
         options={{
           title: "Menu",
           headerRight: () => (
-            <Link href="/categorieseditor" asChild>
+            <Link href="/(admin)/categories/create-category" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -30,9 +30,9 @@ export default function CategoriesStack() {
       <Stack.Screen
         name="[id]"
         options={{
-          title: "Menu",
+          title: "Ajouter un talent",
           headerRight: () => (
-            <Link href="/categorieseditor" asChild>
+            <Link href="/(admin)/categories/create-talent" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome

@@ -38,7 +38,7 @@ export default function TabLayout() {
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
           headerRight: () => (
-            <Link href="/categorieseditor" asChild>
+            <Link href="/(admin)/categories/create-category" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
