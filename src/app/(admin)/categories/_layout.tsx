@@ -5,7 +5,7 @@ import { Pressable } from "react-native";
 
 export default function CategoriesStack() {
   return (
-    <Stack screenOptions={{}}>
+    <Stack>
       <Stack.Screen
         name="index"
         options={{
@@ -26,27 +26,7 @@ export default function CategoriesStack() {
           ),
         }}
       />
-
-      <Stack.Screen
-        name="[id]"
-        options={{
-          title: "Ajouter un talent",
-          headerRight: () => (
-            <Link href="/(admin)/categories/create-talent" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="pencil"
-                    size={20}
-                    color={Colors.light.tint}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
+      <Stack.Screen name="[id]" options={{ headerShown: false }} />
     </Stack>
   );
 }
