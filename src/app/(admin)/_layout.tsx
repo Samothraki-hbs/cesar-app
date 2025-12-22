@@ -1,7 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import React from "react";
-import { Pressable } from "react-native";
 
 import { useColorScheme } from "@components/useColorScheme";
 import Colors from "../../constants/Colors";
@@ -37,25 +36,12 @@ export default function TabLayout() {
           title: "Catégories",
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
-          headerRight: () => (
-            <Link href="/(admin)/categories/create-category" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="plus"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="ligues"
         options={{
+          headerShown: false,
           title: "Ligues",
           tabBarIcon: ({ color }) => <TabBarIcon name="circle" color={color} />,
         }}
