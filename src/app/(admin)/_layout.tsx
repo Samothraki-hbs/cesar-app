@@ -1,5 +1,6 @@
+import { useAuth } from "@/providers/AuthProvider";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import React from "react";
 
 import { useColorScheme } from "@components/useColorScheme";
@@ -14,7 +15,12 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
+  const { isAdmin } = useAuth();
   const colorScheme = useColorScheme();
+
+  if (!isAdmin) {
+    return <Redirect href={"/"} />;
+  }
 
   return (
     <Tabs

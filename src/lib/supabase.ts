@@ -1,6 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
-import * as SecureStore from 'expo-secure-store';
-import 'react-native-url-polyfill/auto';
+import { createClient } from "@supabase/supabase-js";
+import * as SecureStore from "expo-secure-store";
+import "react-native-url-polyfill/auto";
 
 const ExpoSecureStoreAdapter = {
   getItem: (key: string) => {
@@ -14,8 +14,9 @@ const ExpoSecureStoreAdapter = {
   },
 };
 
-const supabaseUrl = 'https://hrsxrshvuihqwkevvfwv.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhyc3hyc2h2dWlocXdrZXZ2Znd2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyOTk4MDAsImV4cCI6MjA4MDg3NTgwMH0.YIONOSKqZWC3rDRl5qUOcm3XKTk4IcFLeSHA7oBss-g';
+const supabaseUrl = "https://oxanfhdaiqzvziumpwoa.supabase.co";
+const supabaseAnonKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94YW5maGRhaXF6dnppdW1wd29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY1NzQ3NjYsImV4cCI6MjA4MjE1MDc2Nn0.7v6mcbF6J6VboWmB-Hh7wd4ud1KHGBmCqvnO8oeK8fY";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {

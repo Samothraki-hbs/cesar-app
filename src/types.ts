@@ -11,3 +11,13 @@ export type PossibleChoice = {
   cote: number;
   film: string;
 };
+
+export type Profile = {
+  id: string;
+  email: string;
+  username: string;
+  avatar_url: string | null;
+  full_name: string | null;
+  website: string | null;
+  group: string | null;
+};

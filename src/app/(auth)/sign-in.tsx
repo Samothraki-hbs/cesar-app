@@ -77,7 +77,7 @@ export default function SignInPage() {
         disabled={loading}
       />
       <Link href={"/sign-up"} asChild>
-        <Text style={styles.link}>Se connecter</Text>
+        <Text style={styles.link}>S'inscrire</Text>
       </Link>
     </View>
   );
