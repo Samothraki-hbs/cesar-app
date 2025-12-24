@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Href, Link, useSegments } from "expo-router";
 import { Pressable, StyleSheet, Text } from "react-native";
 import Colors from "../constants/Colors";
 import { Category, PossibleChoice } from "../types";
@@ -15,8 +15,11 @@ type PossibleChoiceProps = {
 };
 
 const PossibleCategory = ({ category }: CategoryProps) => {
+  const segments = useSegments();
+  const rootSegment = segments[0] || "";
+  const path = `/${rootSegment}/categories/${category.id}`;
   return (
-    <Link href={`/categories/${category.id}`} asChild>
+    <Link href={path as Href} asChild>
       <Pressable style={styles.container}>
         <Text style={styles.title}>{category.title}</Text>
         {/* <Image
@@ -29,6 +32,8 @@ const PossibleCategory = ({ category }: CategoryProps) => {
     </Link>
   );
 };
+
+// utilisation de useSegments ?
 
 export default PossibleCategory; // Je pourrai ensuite renommer comme je veux ce composant dans mes imports !
 

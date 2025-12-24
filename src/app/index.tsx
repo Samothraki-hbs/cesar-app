@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { Link } from "expo-router";
 import React from "react";
 import { View } from "react-native";
@@ -15,6 +16,8 @@ const index = () => {
       <Link href={"/(auth)/sign-in"} asChild>
         <Button text="Authentification" />
       </Link>
+
+      <Button onPress={() => supabase.auth.signOut()} text="Sign out" />
     </View>
   );
 };

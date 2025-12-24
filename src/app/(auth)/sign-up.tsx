@@ -1,11 +1,23 @@
+import { supabase } from "@/lib/supabase";
 import Button from "@components/Button";
 import { Link } from "expo-router";
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function signUpWithEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (error) Alert.alert(error.message);
+    setLoading(false);
+  }
 
   const validateInput = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,9 +68,10 @@ export default function SignUpPage() {
         onChangeText={setPassword}
         placeholder=""
         style={styles.input}
+        secureTextEntry
       />
       {errors ? <Text style={styles.error}>{errors}</Text> : null}
-      <Button onPress={onSubmit} text="S'inscrire" />
+      <Button onPress={signUpWithEmail} text="S'inscrire" />
       <Link href={"/sign-in"} asChild>
         <Text style={styles.link}>Se connecter</Text>
       </Link>
