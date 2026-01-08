@@ -1,18 +1,14 @@
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "@components/EditScreenInfo";
+import { useAuth } from "@/providers/AuthProvider";
 import { Text, View } from "@components/Themed";
 
 export default function TabThreeScreen() {
+  const { profile } = useAuth();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Three</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <EditScreenInfo path="app/(tabs)/three.tsx" />
+      <Text style={styles.title}>{profile?.username}</Text>
+      <Text>Nombre de points: </Text>
     </View>
   );
 }

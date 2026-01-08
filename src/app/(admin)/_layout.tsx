@@ -45,10 +45,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="ligues"
+        name="classement"
         options={{
           headerShown: false,
-          title: "Ligues",
+          title: "Classements",
           tabBarIcon: ({ color }) => <TabBarIcon name="circle" color={color} />,
         }}
       />

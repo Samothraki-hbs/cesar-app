@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, View } from "react-native";
-export default function PersoLigues() {
+export default function ComponentName() {
   return (
     <View>
-      <Text>PersoLigues</Text>
+      <Text>ComponentName</Text>
     </View>
   );
 }

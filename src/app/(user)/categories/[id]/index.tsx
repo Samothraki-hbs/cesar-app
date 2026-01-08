@@ -1,28 +1,40 @@
-import categories from "@assets/data";
+import { useChoices } from "@/api/choices";
 import Button from "@components/Button";
 import { defaultChoiceImage } from "@components/PossibleChoiceItem";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 const UniqueChoice = () => {
   const { id } = useLocalSearchParams();
-  const category = categories.find((cat) => cat.id.toString() === id); // Je récupère la catégorie qui est passée dans mes paramtères
+  const categoryId = Number(id);
+  const { data: choices, error, isLoading } = useChoices(categoryId);
   const [selectedTalent, setSelectedTalent] = useState<string | number | null>(
     null
   );
 
   const talentSelectionne = () => {
-    console.warn("Vous avez séléctionné le talent !", selectedTalent);
+    console.warn("Le choix", selectedTalent, "a remporté un César !");
   };
-  if (!category) {
-    return <Text>La catégorie n'existe pas !</Text>;
+
+  if (isLoading) {
+    return <ActivityIndicator />;
   }
 
+  if (error) {
+    return <Text>Failed to fetch categories</Text>;
+  }
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ headerShown: false }} />
-      <Text style={styles.title}>Catégorie {category.title}</Text>
-      {category.choices.map((choice) => (
+      {/*<Stack.Screen options={{ headerShown: false }} />*/}
+      <Text style={styles.title}>Catégorie {categoryId}</Text>
+      {(choices ?? []).map((choice) => (
         <Pressable
           key={String(choice.id)}
           style={[
@@ -40,14 +52,15 @@ const UniqueChoice = () => {
           />
           <View style={styles.middle}>
             <Text style={styles.title}>{choice.name}</Text>
-            <Text style={styles.film}>{choice.film}</Text>
+            <Text style={styles.film}>{choice.film_title}</Text>
           </View>
 
-          <Text style={styles.cote}>{choice.cote}</Text>
+          <Text style={styles.cote}>{choice.points}</Text>
         </Pressable>
       ))}
 
-      <Button onPress={talentSelectionne} text="Valider la séléction" />
+      <Button onPress={talentSelectionne} text="Valider le gagnant" />
+      {/* à modifier plus tard pour avoir un bouton qui séléctionne le gagnant*/}
     </View>
   );
 };
