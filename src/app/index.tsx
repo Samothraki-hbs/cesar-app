@@ -5,6 +5,7 @@ import React from "react";
 import { ActivityIndicator, View } from "react-native";
 import Button from "../components/Button";
 
+// index de base qui redirige l'utilisateur en fonction de certaines conditions : est-il connecté ? est-il administrateur ?
 const index = () => {
   const { session, loading, isAdmin } = useAuth();
 

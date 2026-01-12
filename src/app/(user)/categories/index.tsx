@@ -14,6 +14,7 @@ export default function MenuScreen() {
   }
 
   return (
+    // La Flatlist me permet de rendre à l'écran plusieurs "PossibleCategory" en y passant la catégorie "item"
     <FlatList
       data={categories}
       renderItem={({ item }) => <PossibleCategory category={item} />}

@@ -1,4 +1,4 @@
-// à écrire !!
+// dossier où je vais écrire mes queries en lien avec les catégories
 import { supabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 

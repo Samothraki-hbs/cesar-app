@@ -53,7 +53,9 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-
+  // coeur de l'application, avec le ThemeProvider, le AuthProvider et le QueryProvider
+  // Le AuthProvider dit : il est possible d'utiliser le hook "useAuth" et tous les objets en lien avec la gestion de l'authentification dans le stack de l'application
+  // Le QueryProvider dit : il est possible d'utiliser tous les objets en lien avec la gestion des query dans le stack de l'application
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <AuthProvider>

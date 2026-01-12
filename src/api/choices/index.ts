@@ -1,4 +1,4 @@
-// à écrire !!
+// dossier où je vais écrire mes queries en lien avec les choix à disposition de l'utilisateur
 import { supabase } from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 
@@ -19,5 +19,3 @@ export const useChoices = (category_id: number) => {
     },
   });
 };
-
-// finir la logique de séléction des choix !

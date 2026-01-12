@@ -1,3 +1,10 @@
+import { Database } from "./database.types";
+
+// écrire l'ensemble des exports depuis les types automatiquement générés
+
+export type Tables<T extends keyof Database["public"]["Tables"]> =
+  Database["public"]["Tables"][T]["Row"];
+
 export type Category = {
   id: string | number;
   title: string;

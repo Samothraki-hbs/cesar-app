@@ -11,6 +11,7 @@ export default function SignUpPage() {
 
   async function signUpWithEmail() {
     setLoading(true);
+    // fonction Supabase toute prête pour me permettre de m'inscrire sur le compte
     const { error } = await supabase.auth.signUp({
       email,
       password,

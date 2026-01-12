@@ -11,6 +11,7 @@ export default function SignInPage() {
 
   async function signInWithEmail() {
     setLoading(true);
+    // fonction Supabase toute prête pour me permettre de me connecter avec mon passeport
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,

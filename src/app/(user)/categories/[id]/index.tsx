@@ -1,3 +1,4 @@
+// page de séléction des choix pour chaque catégorie
 import { useChoices } from "@/api/choices";
 import Button from "@components/Button";
 import { defaultChoiceImage } from "@components/PossibleChoiceItem";
@@ -12,9 +13,14 @@ import {
   View,
 } from "react-native";
 const UniqueChoice = () => {
+  // je récupère l'id que j'ai passé dans ma route avec le hook "useLocalSearchParams"
   const { id } = useLocalSearchParams();
+  // j'utilise categoryId en transformant mon "id " en number
   const categoryId = Number(id);
+  // j'utilise le custom hook useChoices qui passe en paramètre "categoryId", et j'extrais de ce hook les props data, error et isLoading
+  // toujours extraire isLoading et error pour gérer les états du hook
   const { data: choices, error, isLoading } = useChoices(categoryId);
+  // j'utilise un useState pour séléctionner le talent, et je précise que la donnée doit être de type string, number ou null
   const [selectedTalent, setSelectedTalent] = useState<string | number | null>(
     null
   );
@@ -31,8 +37,8 @@ const UniqueChoice = () => {
     return <Text>Failed to fetch categories</Text>;
   }
   return (
+    // je créé une map de mes choix pour tous les afficher à la page
     <View style={styles.container}>
-      {/*<Stack.Screen options={{ headerShown: false }} />*/}
       <Text style={styles.title}>Catégorie {categoryId}</Text>
       {(choices ?? []).map((choice) => (
         <Pressable

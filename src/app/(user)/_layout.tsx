@@ -1,3 +1,4 @@
+// le layout de (user), avec les trois tabs en bas qui sont les trois catégories de pages
 import { useAuth } from "@/providers/AuthProvider";
 import { useClientOnlyValue } from "@components/useClientOnlyValue";
 import { useColorScheme } from "@components/useColorScheme";
@@ -49,7 +50,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="three"
+        name="profile"
         options={{
           title: "Profil",
           tabBarIcon: ({ color }) => <TabBarIcon name="square" color={color} />,
