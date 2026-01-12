@@ -76,7 +76,7 @@ Structure du projet :
 | | index.tsx
 | | \_layout.tsx
 | |
-| +---(admin)
+| +---(admin) # ne sera plus pertinent pour la suite de l'application
 | | | index.tsx
 | | | three.tsx
 | | | \_layout.tsx
@@ -147,6 +147,6 @@ Structure du projet :
 +---lib
 | supabase.ts
 |
-\---providers
+\---providers # Les providers sont des composants spéciaux qui diffusent des données où des fonctions à l'ensemble de l'application sans avoir à passer les "props" manuellement à chaque étage
 AuthProvider.tsx
 QueryProvider.tsx
