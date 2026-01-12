@@ -81,31 +81,31 @@ Structure du projet :
 | | | three.tsx
 | | | \_layout.tsx
 | | |
-| | +---categories
+| | +---categories # ne sera plus pertinent pour la suite de l'application
 | | | | create-category.tsx
 | | | | index.tsx
 | | | | \_layout.tsx
 | | | |
-| | | \---[id]
+| | | \---[id] # ne sera plus pertinent pour la suite de l'application
 | | | create-talent.tsx
 | | | index.tsx
 | | | \_layout.tsx
 | | |
-| | \---ligues
+| | \---ligues # ne sera plus pertinent pour la suite de l'application
 | | index.tsx
 | | ligues-perso.tsx
 | | \_layout.tsx
 | |
-| +---(auth)
+| +---(auth) # groupe qui gère l'authentification
 | | sign-in.tsx
 | | sign-up.tsx
 | | \_layout.tsx
 | |
-| \---(user)
+| \---(user) # groupe de l'utilisateur, pertinent pour la suite de l'application
 | | index.tsx
 | | \_layout.tsx
 | |
-| +---categories
+| +---categories # page catégories, où l'utilisateur peut voir toutes les catégories proposées
 | | | index.tsx
 | | | \_layout.tsx
 | | |
@@ -113,7 +113,7 @@ Structure du projet :
 | | index.tsx
 | | \_layout.tsx
 | |
-| +---classement
+| +---classement # page classement, où l'utilisateur peut voir le classement de l'application
 | | | index.tsx
 | | | \_layout.tsx
 | | |
@@ -121,7 +121,7 @@ Structure du projet :
 | | index.tsx
 | | \_layout.tsx
 | |
-| \---profile
+| \---profile # page profil, où l'utilisateur peut consulter son profil
 | index.tsx
 | \_layout.tsx
 |
