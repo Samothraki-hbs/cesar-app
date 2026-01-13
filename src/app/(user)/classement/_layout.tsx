@@ -5,11 +5,10 @@ import { Stack } from "expo-router";
 export default function ClassementNavigator() {
   return (
     <Stack>
+      <Stack.Screen name="index" />
       <Stack.Screen
         name="[id]"
-        options={{
-          headerShown: false,
-        }}
+        options={{ title: "Détails du profil", headerShown: false }}
       />
     </Stack>
   );

@@ -33,7 +33,7 @@ export default function UserList() {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Stack.Screen options={{ headerShown: true, title: "Classement" }} />
       <FlatList
         data={profiles}
@@ -50,7 +50,7 @@ export default function UserList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#grey",
   },
   center: {
     flex: 1,
