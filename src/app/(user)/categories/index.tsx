@@ -1,6 +1,7 @@
 import { useCategoryList } from "@/api/categories";
 import PossibleCategory from "@components/PossibleChoiceItem";
-import { ActivityIndicator, FlatList, Text } from "react-native";
+import { Stack } from "expo-router";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 
 export default function MenuScreen() {
   const { data: categories, error, isLoading } = useCategoryList();
@@ -14,11 +15,14 @@ export default function MenuScreen() {
   }
 
   return (
-    // La Flatlist me permet de rendre à l'écran plusieurs "PossibleCategory" en y passant la catégorie "item"
-    <FlatList
-      data={categories}
-      renderItem={({ item }) => <PossibleCategory category={item} />}
-      contentContainerStyle={{ gap: 10, padding: 10 }}
-    />
+    // je définis ici le headershown sur l'enfant
+    <View>
+      <Stack.Screen options={{ headerShown: true, title: "Catégories" }} />
+      <FlatList
+        data={categories}
+        renderItem={({ item }) => <PossibleCategory category={item} />}
+        contentContainerStyle={{ gap: 10, padding: 10 }}
+      />
+    </View>
   );
 }

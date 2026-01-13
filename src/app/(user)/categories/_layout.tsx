@@ -12,6 +12,7 @@ export default function CategoriesStack() {
           animation: "slide_from_bottom",
         }}
       />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
     </Stack>
   );
 }

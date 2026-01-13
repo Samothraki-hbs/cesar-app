@@ -31,13 +31,13 @@ export default function TabLayout() {
         headerShown: useClientOnlyValue(false, true),
       }}
     >
-      <Tabs.Screen name="index" options={{ href: null }} />
+      <Tabs.Screen name="index" options={{ href: null, headerShown: false }} />
 
       <Tabs.Screen
         name="categories"
         options={{
-          title: "Catégories",
           headerShown: false,
+          title: "Catégories",
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
         }}
       />

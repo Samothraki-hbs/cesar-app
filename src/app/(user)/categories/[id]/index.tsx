@@ -1,7 +1,6 @@
 // page de séléction des choix pour chaque catégorie
 import { useChoices } from "@/api/choices";
 import Button from "@components/Button";
-import { defaultChoiceImage } from "@components/PossibleChoiceItem";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -39,7 +38,6 @@ const UniqueChoice = () => {
   return (
     // je créé une map de mes choix pour tous les afficher à la page
     <View style={styles.container}>
-      <Text style={styles.title}>Catégorie {categoryId}</Text>
       {(choices ?? []).map((choice) => (
         <Pressable
           key={String(choice.id)}
@@ -52,16 +50,11 @@ const UniqueChoice = () => {
           ]}
           onPress={() => setSelectedTalent(choice.id)}
         >
-          <Image
-            source={{ uri: choice.image || defaultChoiceImage }}
-            style={styles.image}
-          />
+          <Image source={{ uri: choice.image || null }} style={styles.image} />
           <View style={styles.middle}>
             <Text style={styles.title}>{choice.name}</Text>
             <Text style={styles.film}>{choice.film_title}</Text>
           </View>
-
-          <Text style={styles.cote}>{choice.points}</Text>
         </Pressable>
       ))}
 

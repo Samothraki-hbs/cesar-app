@@ -1,5 +1,6 @@
 import { useProfiles } from "@/api/profiles";
 import UserClassementItem from "@components/UserClassementItem";
+import { Stack } from "expo-router";
 import React from "react";
 import {
   ActivityIndicator,
@@ -32,14 +33,17 @@ export default function UserList() {
   }
 
   return (
-    <FlatList
-      data={profiles}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <UserClassementItem profile={item} />}
-      // Optionnel : Message si la liste est vide
-      ListEmptyComponent={<Text>Aucun utilisateur trouvé.</Text>}
-      contentContainerStyle={{ gap: 10, padding: 10 }}
-    />
+    <View>
+      <Stack.Screen options={{ headerShown: true, title: "Classement" }} />
+      <FlatList
+        data={profiles}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <UserClassementItem profile={item} />}
+        // Optionnel : Message si la liste est vide
+        ListEmptyComponent={<Text>Aucun utilisateur trouvé.</Text>}
+        contentContainerStyle={{ gap: 10, padding: 10 }}
+      />
+    </View>
   );
 }
 
