@@ -87,3 +87,34 @@ export const useUserChoices = () => {
     },
   });
 };
+
+const fetchUserChoices = async (userId: string) => {
+  const { data, error } = await supabase
+    .from("user_choices")
+    .select(
+      "id, category_id, choice_id, choices:choice_id(id, name, film_title, image, points), categories:category_id(id,title)"
+    )
+    .eq("profile_id", userId);
+
+  if (error) throw new Error(error.message);
+
+  return (data as any[]).map((row) => ({
+    ...row,
+    choices: Array.isArray(row.choices) ? row.choices[0] : row.choices,
+    categories: Array.isArray(row.categories)
+      ? row.categories[0]
+      : row.categories,
+  })) as UserChoiceWithRelations[];
+};
+
+export const useUserChoices2 = (explicitId?: string) => {
+  const { session } = useAuth();
+
+  const targetId = explicitId ?? session?.user?.id;
+
+  return useQuery({
+    queryKey: ["user_choices", targetId],
+    enabled: !!targetId,
+    queryFn: () => fetchUserChoices(targetId!),
+  });
+};

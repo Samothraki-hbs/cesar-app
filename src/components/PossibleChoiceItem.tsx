@@ -1,27 +1,27 @@
-import { useUserChoices } from "@/api/user-choices";
-import { Href, Link, useSegments } from "expo-router";
+import { Href, Link } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Tables } from "../types";
 
-type CategoryProps = {
-  category: Tables<"categories">;
+type TalentData = {
+  name: string;
+  film_title: string;
+  image: string | null;
 };
 
-const PossibleCategory = ({ category }: CategoryProps) => {
-  const { data: currentUserChoices } = useUserChoices();
-  const segments = useSegments();
-  const rootSegment = segments[0] || "";
-  const path = `/${rootSegment}/categories/${category.id}`;
+type PossibleCategoryProps = {
+  category: Tables<"categories">;
+  talent: TalentData | null;
+  href: Href;
+};
 
-  // Récupération du choix correspondant à cette catégorie
-  const userChoiceForCategory = currentUserChoices?.find(
-    (uc) => uc.category_id === category.id // Utilisation directe de category_id pour la fiabilité
-  );
-
-  const talent = userChoiceForCategory?.choices; // Accès à la table jointe "choices"
-
+// nettoyer ce composant pour qu'il soit moins intelligent
+const PossibleCategory = ({
+  category,
+  talent,
+  href,
+}: PossibleCategoryProps) => {
   return (
-    <Link href={path as Href} asChild>
+    <Link href={href} asChild>
       <Pressable style={styles.mainContainer}>
         {/* Header : Titre de la catégorie et Points */}
         <View style={styles.headerRow}>
