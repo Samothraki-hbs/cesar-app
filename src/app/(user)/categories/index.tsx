@@ -1,5 +1,5 @@
 import { useCategoryList } from "@/api/categories";
-import { useUserChoices2 } from "@/api/user-choices";
+import { useUserChoices } from "@/api/user-choices";
 import PossibleCategory from "@components/PossibleChoiceItem";
 import type { Href } from "expo-router";
 import { Stack, useSegments } from "expo-router";
@@ -12,7 +12,7 @@ export default function MenuScreen() {
     isLoading: catLoading,
     error: catError,
   } = useCategoryList();
-  const { data: userChoices, isLoading: choicesLoading } = useUserChoices2();
+  const { data: userChoices, isLoading: choicesLoading } = useUserChoices();
 
   const segments = useSegments();
   const rootSegment = segments[0] || "";

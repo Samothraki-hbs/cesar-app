@@ -11,7 +11,7 @@ type TalentData = {
 type PossibleCategoryProps = {
   category: Tables<"categories">;
   talent: TalentData | null;
-  href: Href;
+  href?: Href;
 };
 
 // nettoyer ce composant pour qu'il soit moins intelligent
@@ -20,36 +20,43 @@ const PossibleCategory = ({
   talent,
   href,
 }: PossibleCategoryProps) => {
-  return (
-    <Link href={href} asChild>
-      <Pressable style={styles.mainContainer}>
-        {/* Header : Titre de la catégorie et Points */}
-        <View style={styles.headerRow}>
-          <Text style={styles.categoryTitle}>{category.title}</Text>
-          <Text style={styles.pointsText}>{category.points}</Text>
-        </View>
+  const content = (
+    <Pressable style={styles.mainContainer}>
+      {/* Header : Titre de la catégorie et Points */}
+      <View style={styles.headerRow}>
+        <Text style={styles.categoryTitle}>{category.title}</Text>
+        <Text style={styles.pointsText}>{category.points}</Text>
+      </View>
 
-        {talent ? (
-          /* DESIGN SI SÉLECTIONNÉ (Inspiré de ton image) */
-          <View style={styles.selectedTalentContainer}>
-            <Image
-              source={{ uri: talent.image || "https://via.placeholder.com/50" }}
-              style={styles.talentImage}
-            />
-            <View style={styles.talentInfo}>
-              <Text style={styles.talentNameText}>{talent.name}</Text>
-              <Text style={styles.filmTitleText}>{talent.film_title}</Text>
-            </View>
+      {talent ? (
+        /* DESIGN SI SÉLECTIONNÉ (Inspiré de ton image) */
+        <View style={styles.selectedTalentContainer}>
+          <Image
+            source={{ uri: talent.image || "https://via.placeholder.com/50" }}
+            style={styles.talentImage}
+          />
+          <View style={styles.talentInfo}>
+            <Text style={styles.talentNameText}>{talent.name}</Text>
+            <Text style={styles.filmTitleText}>{talent.film_title}</Text>
           </View>
-        ) : (
-          /* DESIGN PAR DÉFAUT (Vide) */
-          <View style={styles.actionBadge}>
-            <Text style={styles.actionText}>Choisissez un talent !</Text>
-          </View>
-        )}
-      </Pressable>
-    </Link>
+        </View>
+      ) : (
+        /* DESIGN PAR DÉFAUT (Vide) */
+        <View style={styles.actionBadge}>
+          <Text style={styles.actionText}>Choisissez un talent !</Text>
+        </View>
+      )}
+    </Pressable>
   );
+  // cette écriture permet de passer href comme un argument conditionnel, et donc de ne pas l'utiliser quand j'ai besoin de mon composant dans la page du profil de l'ami
+  if (href) {
+    return (
+      <Link href={href} asChild>
+        {content}
+      </Link>
+    );
+  }
+  return content;
 };
 
 export default PossibleCategory;
