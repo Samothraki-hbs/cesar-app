@@ -14,7 +14,8 @@ export const useProfiles = () => {
       const { data, error } = await supabase
         .from("profiles")
         .select("*")
-        .neq("id", user.id);
+        .neq("id", user.id)
+        .order("points", { ascending: true });
       if (error) {
         throw new Error(error.message);
       }

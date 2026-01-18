@@ -25,6 +25,7 @@ const UserClassementItem = ({ profile }: ProfileClassementProps) => {
     <Link href={path as Href} asChild>
       <Pressable style={styles.container}>
         <Text style={styles.title}>{profile.username}</Text>
+        <Text style={styles.price}>Points : {profile.points}</Text>
       </Pressable>
     </Link>
   );
@@ -38,8 +39,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   image: {
     width: "100%",
@@ -53,6 +58,5 @@ const styles = StyleSheet.create({
   price: {
     color: Colors.light.tint,
     fontWeight: "bold",
-    marginTop: "auto",
   },
 });

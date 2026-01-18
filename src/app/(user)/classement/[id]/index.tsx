@@ -1,10 +1,9 @@
 // à réecrire !!!
-import { useCategoryList } from "@/api/categories";
 import { useOtherProfile } from "@/api/profiles";
 import { useUserChoices } from "@/api/user-choices";
 import PossibleCategory from "@components/PossibleChoiceItem";
 import { Stack, useLocalSearchParams } from "expo-router";
-import React, { useMemo } from "react";
+import React from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -22,32 +21,13 @@ export default function ProfilAmi() {
   } = useOtherProfile(id);
 
   const {
-    data: categories,
-    isLoading: catLoading,
-    error: catError,
-  } = useCategoryList();
-
-  const {
     data: userChoices,
     isLoading: isUserChoicesLoading,
     error: userChoicesError,
   } = useUserChoices(id);
 
-  const choicesMap = useMemo(() => {
-    const map = new Map();
-    userChoices?.forEach((uc) => {
-      if (uc.category_id) map.set(uc.category_id, uc.choices);
-    });
-    return map;
-  }, [userChoices]);
-
   // Logique de filtrage des catégories
   // Utilisation de filter et has à préciser
-  const filteredCategories = useMemo(() => {
-    if (!categories || !userChoices) return [];
-    // logique à apprendre, à préciser
-    return categories.filter((cat) => choicesMap.has(cat.id));
-  }, [categories, choicesMap, userChoices]);
 
   if (isProfileLoading || isUserChoicesLoading) {
     return <ActivityIndicator />;
@@ -65,19 +45,26 @@ export default function ProfilAmi() {
     <View style={styles.container}>
       <Stack.Screen options={{ title: "Les choix de " + profile?.full_name }} />
       <View>
-        {userChoicesError || !userChoices ? (
+        {userChoicesError || !userChoices || userChoices.length === 0 ? (
           <Text>
             L'utilisateur n'a pas encore fait de choix ou une erreur est
             survenue
           </Text>
         ) : (
           <FlatList
-            data={filteredCategories}
+            data={userChoices}
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={{ gap: 10, padding: 10 }}
             renderItem={({ item }) => {
-              const talent = choicesMap.get(item.id) || null;
-              return <PossibleCategory category={item} talent={talent} />;
+              if (!item.categories || !item.choices) {
+                return null;
+              }
+              return (
+                <PossibleCategory
+                  category={item.categories}
+                  talent={item.choices}
+                />
+              );
             }}
           />
         )}

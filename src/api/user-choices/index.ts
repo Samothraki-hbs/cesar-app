@@ -25,6 +25,7 @@ export const useNewUserChoice = () => {
     },
     async onSuccess() {
       await queryClient.invalidateQueries({ queryKey: ["products"] });
+      // ne pas oublier de modifier la queryKey
     },
     onError(error) {},
   });
@@ -53,7 +54,7 @@ const fetchUserChoices = async (userId: string) => {
   const { data, error } = await supabase
     .from("user_choices")
     .select(
-      "id, category_id, choice_id, choices:choice_id(id, name, film_title, image, points), categories:category_id(id,title)"
+      "id, category_id, choice_id, choices:choice_id(id, name, film_title, image, points), categories:category_id(id,title, points, created_at)"
     )
     .eq("profile_id", userId);
 

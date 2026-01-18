@@ -3,13 +3,13 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Tables } from "../types";
 
 type TalentData = {
-  name: string;
-  film_title: string;
+  name: string | null;
+  film_title: string | null;
   image: string | null;
 };
 
 type PossibleCategoryProps = {
-  category: Tables<"categories">;
+  category: Pick<Tables<"categories">, "id" | "title" | "points">; // préciser ce que cela veut dire
   talent: TalentData | null;
   href?: Href;
 };
